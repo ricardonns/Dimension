@@ -1,0 +1,46 @@
+<h1>Listing products_infos</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Valuetype</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @product.products_infos.each do |products_info| %>
+  <tr>
+    <td><%= products_info.description %></td>
+    <td><%= products_info.valueType %></td>
+    <td><%= products_info.value %></td>
+    <td><%= link_to 'Edit', edit_products_info_path(products_info) %></td>
+    <td><%= link_to 'Destroy', products_info, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<h2>Add comment</h2>
+
+<%= form_for([@product, @product.products_infos.build]) do |f| %>
+      <div class="field">
+        <%= f.label :description %><br />
+        <%= f.text_field :description %>
+      </div>
+      <div class="field">
+        <%= f.label :valueType %><br />
+        <%= f.text_field :valueType %>
+      </div>
+      <div class="field">
+        <%= f.label :value %><br />
+        <%= f.text_field :value %>
+      </div>
+      <div class="field">
+        <%= f.label :productId %><br />
+        <%= f.text_field :productId %>
+      </div>
+
+    <%= f.submit %>
+
+<% end %>

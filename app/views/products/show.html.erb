@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @product.price %>
+</p>
+
+<p>
+  <b>Pricevat:</b>
+  <%= @product.priceVat %>
+</p>
+
+<p>
+  <b>Priceorigin:</b>
+  <%= @product.priceOrigin %>
+</p>
+
+<p>
+  <b>Priceoriginvat:</b>
+  <%= @product.priceOriginVat %>
+</p>
+
+<p>
+  <b>Expiredate:</b>
+  <%= @product.expireDate %>
+</p>
+
+<p>
+  <b>Expired:</b>
+  <%= @product.expired %>
+</p>
+
+<p>
+  <b>Subsectionid:</b>
+  <%= @product.subSectionId %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

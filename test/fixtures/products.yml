@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  price: 9.99
+  priceVat: 9.99
+  priceOrigin: 9.99
+  priceOriginVat: 9.99
+  expireDate: 2011-02-02 23:05:20
+  expired: false
+  subSectionId: 1
+
+two:
+  name: MyString
+  description: MyText
+  price: 9.99
+  priceVat: 9.99
+  priceOrigin: 9.99
+  priceOriginVat: 9.99
+  expireDate: 2011-02-02 23:05:20
+  expired: false
+  subSectionId: 1
