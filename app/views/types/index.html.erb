@@ -1,0 +1,16 @@
+<h1>Types</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  <% @types.each do |type| %>
+    <tr>
+      <td><%= link_to type.name, edit_type_path(type) %></td>
+      <td><%= link_to 'Destroy', type, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<div>
+  <%= render 'form' %>
+</div>

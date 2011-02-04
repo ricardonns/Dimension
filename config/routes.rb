@@ -1,7 +1,11 @@
 Dimension::Application.routes.draw do
 
+  resources :types
+
+  resources :sizes
+
   resources :products do
-    resources :products_infos
+    resources :stocks
   end
 
   get "home/index"

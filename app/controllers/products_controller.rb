@@ -1,56 +1,43 @@
 class ProductsController < ApplicationController
-  # GET /products
-  # GET /products.xml
 
   respond_to :html, :xml, :json
 
   def index
-    @products = Product.all
-
+    @products = Product.find_all_by_active true
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }
     end
   end
 
-  # GET /products/1
-  # GET /products/1.xml
   def show
     @product = Product.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @product }
-    end
+    @sizes = Size.where(:active => true, :type_id => @product.type_id)
+    @stock = @product.stocks.new
+    respond_with [@product, @sizes, @stock]
   end
 
-  # GET /products/new
-  # GET /products/new.xml
   def new
     @product = Product.new
-
+    @types = Type.find_all_by_active true
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @product }
     end
   end
 
-  # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @types = Type.find_all_by_active true
   end
 
-  # POST /products
-  # POST /products.xml
   def create
-    @product = Product.new(params[:product_id])
+    @product = Product.new(params[:product])
 
     flash[:notice] = 'Post was successfully created!' if @product.save
-    respond_with @product, :location => product_products_infos_path(@product)
+    respond_with @product, :location => products_path
   end
 
-  # PUT /products/1
-  # PUT /products/1.xml
   def update
     @product = Product.find(params[:id])
 
@@ -65,25 +52,13 @@ class ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.xml
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
+    @product.active = false
+    flash[:notice] = 'product was successfully removed!' if @product.save
 
-    respond_to do |format|
-      format.html { redirect_to(products_url) }
-      format.xml  { head :ok }
-    end
-  end
+    respond_with @product, :location => products_path
 
-  def infos
-    @product = Product.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @product }
-    end
   end
 
 end

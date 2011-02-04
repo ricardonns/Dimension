@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Type</th>
     <th>Description</th>
     <th>Price</th>
     <th>Pricevat</th>
@@ -10,7 +11,6 @@
     <th>Priceoriginvat</th>
     <th>Expiredate</th>
     <th>Expired</th>
-    <th>Subsectionid</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +19,7 @@
 <% @products.each do |product| %>
   <tr>
     <td><%= product.name %></td>
+    <td><%= Type.find_by_id(product.type_id).name %></td>
     <td><%= product.description %></td>
     <td><%= product.price %></td>
     <td><%= product.priceVat %></td>
@@ -26,7 +27,6 @@
     <td><%= product.priceOriginVat %></td>
     <td><%= product.expireDate %></td>
     <td><%= product.expired %></td>
-    <td><%= product.subSectionId %></td>
     <td><%= link_to 'Show', product %></td>
     <td><%= link_to 'Edit', edit_product_path(product) %></td>
     <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>

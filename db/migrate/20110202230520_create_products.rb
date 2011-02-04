@@ -8,8 +8,9 @@ class CreateProducts < ActiveRecord::Migration
       t.decimal :priceOrigin
       t.decimal :priceOriginVat
       t.datetime :expireDate
+      t.references :type
       t.boolean :expired
-      t.integer :subSectionId
+      t.boolean :active, :default => true
 
       t.timestamps
     end

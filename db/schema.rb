@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110202232321) do
+ActiveRecord::Schema.define(:version => 20110203185545) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
@@ -20,17 +20,34 @@ ActiveRecord::Schema.define(:version => 20110202232321) do
     t.decimal  "priceOrigin",    :precision => 10, :scale => 0
     t.decimal  "priceOriginVat", :precision => 10, :scale => 0
     t.datetime "expireDate"
+    t.integer  "type_id"
     t.boolean  "expired"
-    t.integer  "subSectionId"
+    t.boolean  "active",                                        :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "products_infos", :force => true do |t|
-    t.string   "description"
-    t.string   "valueType"
-    t.string   "value"
+  create_table "sizes", :force => true do |t|
+    t.string   "name"
+    t.integer  "type_id"
+    t.boolean  "active",     :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stocks", :force => true do |t|
+    t.string   "name"
+    t.integer  "quantity"
     t.integer  "product_id"
+    t.integer  "size_id"
+    t.boolean  "active",     :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "types", :force => true do |t|
+    t.string   "name"
+    t.boolean  "active",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

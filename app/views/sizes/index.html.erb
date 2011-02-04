@@ -1,0 +1,19 @@
+<h1>Sizes</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th></th>
+  </tr>
+  <% @sizes.each do |size| %>
+    <tr>
+      <td><%= link_to size.name, edit_size_path(size) %></td>
+      <td><%= Type.find_by_id(size.type_id).name %></td>
+      <td><%= link_to 'Destroy', size, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div>
+  <%= render 'form' %>  
+</div>

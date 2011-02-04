@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+
+Size.find_or_create_by_name :name => "L"
+Size.find_or_create_by_name :name => "M"
+Product.find_or_create_by_name :name => "Produto Teste"

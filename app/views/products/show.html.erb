@@ -40,11 +40,26 @@
   <%= @product.expired %>
 </p>
 
-<p>
-  <b>Subsectionid:</b>
-  <%= @product.subSectionId %>
-</p>
+<h2>Stocks</h2>
 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Quantity</th>
+    <th>Size</th>
+  </tr>
+  <% @product.stocks.each do |stock|  %>
+    <tr>
+      <td><%= stock.name %></td>
+      <td><%= stock.quantity.to_s %></td>
+      <td><%= Size.find_by_id(stock.size_id).name  %></td>
+    </tr>
+  <% end %>
+</table>
+
+<div>
+  <%= render 'stock' %>
+</div>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
